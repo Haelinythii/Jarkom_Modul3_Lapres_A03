@@ -277,11 +277,6 @@ Selanjutnya, squid di restart dengan cara mengetikkan perintah:
 service squid restart
 ```
 
-Berikut adalah akses pada jam yang diperbolehkan :
-
-![klien](img/no7-11_5DalamWaktu.png)
-
-
 ## Soal 9
 
 Pada soal nomor 9, kita diminta untuk melakukan pembatasan akses, yang berhubungan dengan perintah redirect nomor 10, di mana setiap hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00), jika user melakukan akses ke suatu website maka akan dilakukan redirect.
@@ -343,6 +338,9 @@ service squid restart
 
 Saat user masuk ke google.com pada waktu yang telah disebutkan :
 ![klien](img/no7-11_7Redirect.png)
+
+Berikut adalah akses pada jam yang diperbolehkan :
+![klien](img/no7-11_5DalamWaktu.png)
 
 User dialihkan menuju http://monta.if.its.ac.id :
 ![klien](img/no7-11_8Redirect.png)
