@@ -227,9 +227,7 @@ Selanjutnya, squid di restart dengan cara mengetikkan perintah:
 service squid restart
 ```
 
-Lalu, Mengubah pengaturan proxy browser sebagai berikut :
-
-![klien](img/no7-11_3.png)
+Lalu, Mengubah pengaturan proxy browser dengan IP MOJOKERTO sebagai host, dan mengisikan port 8080.
 
 Kemudian saat mengakses web (menggunakan mode incognito/private), akan muncul pop-up untuk login.
 
@@ -239,7 +237,7 @@ akses akan diberikan saat kita mengisikan username dan password yang benar.
 
 ## Soal 8
 
-Pada soal no 8, kita diminta untuk membatasi penggunaan hanya pada Selasa-Rabu pukul 13.00-18.00
+Pada soal no 8, kita diminta untuk membatasi penggunaan hanya pada hari Selasa-Rabu pukul 13.00-18.00
 
 Langkah pertama, kita buat file baru bernama acl.conf di folder squid :
 
