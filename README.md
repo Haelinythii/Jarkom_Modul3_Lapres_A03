@@ -26,17 +26,76 @@ xterm -T BANYUWANGI -e linux ubd0=BANYUWANGI,jarkom umid=BANYUWANGI eth0=daemon,
 xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch3 mem=64M &
 ```
 
-Setelah kita bash topologi.sh, kita ketika `nano /etc/sysctl.conf` dan uncomment pada `net.ipv4.ip_forward=1`, lalu save dan ketikkan command `sysctl -p` untuk mengaktifkan perubahan yang ada.
+Setelah kita bash topologi.sh, kita ketikan `nano /etc/sysctl.conf` dan uncomment pada `net.ipv4.ip_forward=1`, lalu save dan ketikkan command `sysctl -p` untuk mengaktifkan perubahan yang ada.
 
 Lalu, kita setting IP dari UML dengan `nano /etc/network/interfaces`.
 
 **UML Surabaya:**
 
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 10.151.72.18
+netmask 255.255.255.252
+gateway 10.151.72.17
+
+auto eth1
+iface eth1 inet static
+address 192.168.0.1
+netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+address 192.168.1.1
+netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+address 10.151.73.33
+netmask 255.255.255.248
+```
+
 **UML Malang:**
+
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 10.151.73.34
+netmask 255.255.255.248
+gateway 10.151.73.33
+```
 
 **UML Mojokerto:**
 
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 10.151.73.35
+netmask 255.255.255.248
+gateway 10.151.73.33
+```
+
 **UML Tuban:**
+
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 10.151.73.36
+netmask 255.255.255.248
+gateway 10.151.73.33
+```
 
 ## Soal 2
 
