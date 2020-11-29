@@ -166,25 +166,27 @@ Dan lihat pada resolv.conf nya dengan `cat /etc/resolv.conf`, jika sudah seperti
 
 ## Soal 7
 
-Diminta membuat User autentikasi dengan format:
+Pada soal nomor 7, kita diminta untuk membuat User autentikasi dengan format:
+
 User : userta_a03
+
 Password : inipassw0rdta_a03
 
-Buat konfigurasi squid dengan mengetikkan :
+Pertama, kita buat konfigurasi squid dengan mengetikkan :
 
 ```
 nano /etc/squid/squid.conf
 ```
 
-Buat user dan password baru. Ketikkan:
+Kedua, kita buat user dan password baru dengan mengetikkan :
 
 ```
 htpasswd -c /etc/squid/passwd userta_a03
 ```
 
-type & re type password : inipassw0rdta_a03
+Selanjutnya, melakukan type & re type password : inipassw0rdta_a03
 
-Edit konfigurasi squid menjadi:
+Lalu, mengedit konfigurasi squid menjadi:
 
 ```
 http_port 8080
@@ -203,29 +205,38 @@ http_access deny !USERS
 ![klien](img/no7-11_2.png)
 
 auth_param	: digunakan untuk mengatur autentikasi.
+
 program		: Perintah untuk mendefiniskan autentikator eksternal.
+
 children	: Mendefinisikan jumlah maksimal autentikator muncul.
+
 realm		: Teks yang akan muncul pada pop-up autentikasi.
+
 credentialsttl	: Mengatur masa aktif suatu autentikasi berlaku.
+
 casesensitive	: Mengatur apakah username bersifat case sensitive atau tidak.
+
 acl		: digunakan untuk mendefinisikan pengaturan akses tertentu. 
 
 ```
 http_access deny !USERS
 ```
 
-Melakukan deny pada akses yang dilakukan oleh selain user.
+Perintah di atas digunakan untuk melakukan deny pada akses yang dilakukan oleh selain user.
 
-Restart squid dengan cara mengetikkan perintah:
+Squid di restart dengan cara mengetikkan perintah:
 
 ```
 service squid restart
 ```
-Ubah pengaturan proxy browser. Gunakan MOJOKERTO sebagai host dan isikan port 8080.
 
-Kemudian cobalah untuk mengakses web (usahakan menggunakan mode incognito/private), akan muncul pop-up untuk login.
+Mengubah pengaturan proxy browser dengan menggunakan MOJOKERTO sebagai host dan mengisikan port 8080.
+
+Kemudian saat mengakses web (menggunakan mode incognito/private), akan muncul pop-up untuk login.
 
 ![klien](img/no7-11_4Password.png)
+
+akses akan diberikan saat kita mengisikan username dan password yang benar.
 
 ## Soal 8
 
