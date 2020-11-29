@@ -170,13 +170,19 @@ Diminta membuat User autentikasi dengan format:
 User : userta_a03
 Password : inipassw0rdta_a03
 
+Buat konfigurasi squid dengan mengetikkan :
+
+```
+nano /etc/squid/squid.conf
+```
+
 Buat user dan password baru. Ketikkan:
 
 ```
 htpasswd -c /etc/squid/passwd userta_a03
 ```
 
-type & re type password inipassw0rdta_a03
+type & re type password : inipassw0rdta_a03
 
 Edit konfigurasi squid menjadi:
 
@@ -194,7 +200,7 @@ http_access deny !USERS
 ```
 
 ![klien](img/no7-11_1.png)
-
+![klien](img/no7-11_2.png)
 
 auth_param	: digunakan untuk mengatur autentikasi.
 program		: Perintah untuk mendefiniskan autentikator eksternal.
@@ -208,8 +214,18 @@ acl		: digunakan untuk mendefinisikan pengaturan akses tertentu.
 http_access deny !USERS
 ```
 
-
 Melakukan deny pada akses yang dilakukan oleh selain user.
+
+Restart squid dengan cara mengetikkan perintah:
+
+```
+service squid restart
+```
+Ubah pengaturan proxy browser. Gunakan MOJOKERTO sebagai host dan isikan port 8080.
+
+Kemudian cobalah untuk mengakses web (usahakan menggunakan mode incognito/private), akan muncul pop-up untuk login.
+
+![klien](img/no7-11_4Password.png)
 
 ## Soal 8
 
