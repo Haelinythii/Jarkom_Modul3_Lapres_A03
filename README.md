@@ -251,7 +251,7 @@ Lalu, menambahkan baris berikut di dalamnya :
 acl AVAILABLE_WORKINGno8 time TW 13:00-18:00
 ```
 
-MTWHF adalah hari-hari dimana user diperbolehkan menggunakan proxy. (S: Sunday, M: Monday, T: Tuesday, W: Wednesday, H: Thursday, F: Friday, A: Saturday)
+MTWHF adalah hari-hari dimana user diperbolehkan menggunakan proxy. (S: Sunday, M: Monday, T: Tuesday, W: Wednesday, H: Thursday, F: Friday, A: Saturday). 
 Penulisan jam menggunakan format: h1:m1-h2:m2. Dengan syarat h1<h2 dan m1<m2
 
 Menambahkan baris pada konfigurasi file squid.conf sebagai berikut :
@@ -335,23 +335,22 @@ http_reply_access deny redsite
 ```
 untuk melakukan deny pada reply access redsite
 
-Saat user masuk ke google.com pada waktu yang telah disebutkan :
-![klien](img/no7-11_7Redirect.png)
-
-User dialihkan menuju http://monta.if.its.ac.id :
-![klien](img/no7-11_8Redirect.png)
-
 Selanjutnya, squid di restart dengan cara mengetikkan perintah:
 
 ```
 service squid restart
 ```
 
+Saat user masuk ke google.com pada waktu yang telah disebutkan :
+![klien](img/no7-11_7Redirect.png)
+
+User dialihkan menuju http://monta.if.its.ac.id :
+![klien](img/no7-11_8Redirect.png)
+
 7-10 file squid.conf
 
 ![klien](img/no7-11_1.png)
 ![klien](img/no7-11_2.png)
-
 
 ## Soal 11
 
