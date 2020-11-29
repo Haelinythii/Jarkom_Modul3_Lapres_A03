@@ -279,7 +279,7 @@ service squid restart
 
 ## Soal 9
 
-Pada soal nomor 9, kita diminta untuk melakukan pembatasan akses, yang berhubungan dengan perintah redirect nomor 10, di mana setiap hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00), jika user melakukan akses ke suatu website maka akan dilakukan redirect.
+Pada soal nomor 9, kita diminta untuk melakukan pembatasan akses, di mana di luar hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00), user tidak dapat mengakses jaringan internet dengan proxy tersebut.
 
 Pertama, kita tambahkan baris berikut pada file acl.conf :
 ```
@@ -304,7 +304,7 @@ service squid restart
 
 ## Soal 10
 
-Soal nomor 10 merupakan lanjutan soal nomor 9 di mana kita diminta untuk melakukan redirect saat mengakses google.com menjadi menuju monta.if.its.ac.id, pada waktu yang sudah disebutkan di nomor 9.
+Pada soal nomor 10, kita diminta untuk melakukan redirect saat mengakses google.com. Setiap mengakses google.com, maka akan di redirect menuju monta.if.its.ac.id.
 
 Langkah pertama yang dilakukan adalah menambahkan pada konfigurasi file squid.conf :
 
