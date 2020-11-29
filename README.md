@@ -97,14 +97,72 @@ netmask 255.255.255.248
 gateway 10.151.73.33
 ```
 
+**UML Gresik, Sidoarjo, Banyuwangi, Madiun:**
+![klien](img/no3-6_3.png)
+
+Lalu restart dengan `service networking restart` dan `apt-get update`
+
 ## Soal 2
 
-## Soal 3
+Setting dhcp server dilakukan di Tuban dengan menginstall `apt-get install isc-dhcp-server`. Setelah itu kita edit file settingan nya yaitu `nano /etc/default/isc-dhcp-server`. Pada bagian interface kita isi dengan eth0, sehingga akan sesuai dengan gambar dibawah ini:
 
-## Soal 4
+![tuban](img/no2_1.png)
 
-## Soal 5
-## Soal 6
+Untuk menjadikan surabaya sebagai DHCP relay, kita bisa melakukan install `apt-get install isc-dhcp-relay`. Pada proses installasi, kita masukkan ip dari dhcp servernya yaitu "Tuban" yaitu `10.151.73.36`, interface nya dikosongi saja untuk di auto configure oleh dhcp relay nya sendiri. Sehingga kalau dilihat settingan isc-dhcp-relay akan menjadi seperti berikut:
+
+![sby](img/no2_2.png)
+
+## Soal 3 sampai 6
+
+Buka file konfigurasi DHCP dengan `nano /etc/dhcp/dhcpd.conf` pada Tuban, dan masukkan konfigurasi subnet sesuai dengan gambar dibawah:
+
+![klien](img/no3-6_1.png)
+![klien](img/no3-6_2.png)
+
+**Soal 3:**
+
+Pada subnet 1 yaitu 192.168.0.0, kita masukkan 
+```
+range 192.168.0.10 192.168.0.100
+range 192.168.0.110 192.168.0.200
+```
+
+**Soal 4:**
+
+Pada subnet 3 yaitu 192.168.0.1, kita masukkan 
+```
+range 192.168.0.50 192.168.0.70
+```
+
+**Soal 5:**
+
+Pada kedua subnet, 1 dan 3 yaitu 192.168.0.0 dan 192.168.0.1, kita masukkan 
+```
+option domain-name-servers 10.151.73.34, 202.46.129.2;
+```
+agar klien mendapatkan DNS Malang (10.151.73.34) dan DNS 202.46.129.2 dari DHCP
+
+**Soal 6:**
+
+Pada subnet 1 192.168.0.0, kita masukkan 
+```
+default-lease-time 300;
+max-lease-time 300;
+```
+
+Sedangkan pada subnet 1 192.168.0.0, kita masukkan 
+```
+default-lease-time 600;
+max-lease-time 600;
+```
+
+untuk testingnya, kita bisa lakukan restart dengan `service isc-dhcp-server restart` dan melihat ifconfig dari masing-masing klien:
+
+![klienifconfig](img/no3-6_4.png)
+
+Dan lihat pada resolv.conf nya dengan `cat /etc/resolv.conf`, jika sudah seperti dibawah, berarti konfigurasi dhcp sudah berhasil.
+
+![klienresolv](img/no3-6_5.png)
 
 ## Soal 7
 
@@ -117,3 +175,18 @@ gateway 10.151.73.33
 ## Soal 11
 
 ## Soal 12
+
+Pada malang, kita akan buat domain dengan nama "janganlupa-ta.a03.pw". Caranya adalah sebagai berikut:
+
+Lakukan command `nano /etc/bind/named.conf.local` untuk mengedit file itu, lalu isikan zone nya seperti gambar dibawah ini:
+
+![malangdns](img/no12_1.png)
+
+setelah itu kita buat folder jarkom dengan command `mkdir /etc/bind/jarkom`, dan copy file db.local kedalam folder itu dengan `cp /etc/bind/db.local /etc/bind/jarkom/janganlupa-ta.a03.pw`. Kemudian isi dari file tersebut kita sesuai dengan dengan gambar dibawah ini, dengan ip dari domain tersebut diarahkan kepada mojokerto (10.151.73.35) sebagai proxy server:
+
+![malangdns2](img/no12_2.png)
+
+pada settingan proxy, bisa dirubah dengan domain yang sudah didefinisikan diatas tadi, dan juga masih bisa dibuka sesuai dengan konfigurasi yang ada di proxy.
+
+![malangdns2](img/no7-11_3.png)
+
