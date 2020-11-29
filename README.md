@@ -227,7 +227,7 @@ Selanjutnya, squid di restart dengan cara mengetikkan perintah:
 service squid restart
 ```
 
-Lalu, Mengubah pengaturan proxy browser dengan menggunakan MOJOKERTO sebagai host dan mengisikan port 8080.
+Lalu, Mengubah pengaturan proxy browser sebagai berikut :
 
 ![klien](img/no7-11_3.png)
 
