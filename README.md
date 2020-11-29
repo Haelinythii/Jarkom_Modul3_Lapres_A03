@@ -345,7 +345,8 @@ Berikut adalah akses pada jam yang diminta :
 User dialihkan menuju http://monta.if.its.ac.id :
 ![klien](img/no7-11_8Redirect.png)
 
-file squid.conf nomor 7-10
+
+**File squid.conf nomor 7-10**
 
 ![klien](img/no7-11_1.png)
 ![klien](img/no7-11_2.png)
