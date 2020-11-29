@@ -166,13 +166,144 @@ Dan lihat pada resolv.conf nya dengan `cat /etc/resolv.conf`, jika sudah seperti
 
 ## Soal 7
 
+Diminta membuat User autentikasi dengan format:
+User : userta_a03
+Password : inipassw0rdta_a03
+
+Buat user dan password baru. Ketikkan:
+htpasswd -c /etc/squid/passwd userta_a03
+
+type & re type password inipassw0rdta_a03
+
+Edit konfigurasi squid menjadi:
+
+http_port 8080
+visible_hostname mojokerto
+
+auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid3/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access deny !USERS
+
+auth_param	: digunakan untuk mengatur autentikasi.
+program		: Perintah untuk mendefiniskan autentikator eksternal.
+children	: Mendefinisikan jumlah maksimal autentikator muncul.
+realm		: Teks yang akan muncul pada pop-up autentikasi.
+credentialsttl	: Mengatur masa aktif suatu autentikasi berlaku.
+casesensitive	: Mengatur apakah username bersifat case sensitive atau tidak.
+acl		: digunakan untuk mendefinisikan pengaturan akses tertentu. 
+
+http_access deny !USERS
+
+Melakukan deny pada akses yang dilakukan oleh selain user.
+
 ## Soal 8
+
+Diminta membatasi penggunaan internet hanya pada Selasa-Rabu pukul 13.00-18.00
+
+Buat file baru bernama acl.conf di folder squid
+nano /etc/squid/acl.conf
+
+Tambahkan baris berikut
+acl AVAILABLE_WORKINGno8 time TW 13:00-18:00
+
+MTWHF adalah hari-hari dimana user diperbolehkan menggunakan proxy. (S: Sunday, M: Monday, T: Tuesday, W: Wednesday, H: Thursday, F: Friday, A: Saturday)
+Penulisan jam menggunakan format: h1:m1-h2:m2. Dengan syarat h1<h2 dan m1<m2
+
+Tambahkan pada konfigurasi file squid.conf :
+
+include /etc/squid/acl.conf
+http_access deny !AVAILABLE_WORKINGno8
+
+include /etc/squid/acl.conf
+
+untuk menambahkan konfigurasi file acl.conf pada file squid.conf
+
+http_access deny !AVAILABLE_WORKINGno8
+
+untuk melakukan deny pada akses yang dilakukan selain pada waktu yang telah disebutkan di AVAILABLE_WORKINGno8
+
 
 ## Soal 9
 
+Diminta melakukan pembatasan setiap hari Selasa-Kamis pukul 21.00 - 09.00 keesokan harinya (sampai Jumat jam 09.00).
+
+Tambahkan baris berikut pada file acl.conf :
+
+acl AVAILABLE_WORKINGno91 time TWH 21:00-23:59
+acl AVAILABLE_WORKINGno92 time WHF 00:00-09:00
+
+Format Penulisan jam adalah h1:m1-h2:m2. Dengan syarat h1<h2 dan m1<m2. Sehingga, rentang waktu dijadikan dua, yaitu hari selasa rabu kamis jam 21:00-23:59 dan hari rabu kamis jumat jam 00:00-09:00.
+
+Tambahkan konfigurasi file .conf sehingga menjadi :
+
+http_access deny !AVAILABLE_WORKINGno8 !AVAILABLE_WORKINGno91 !AVAILABLE_WORKINGno92
+
+untuk melakukan deny pada akses yang dilakukan selain pada waktu yang telah disebutkan di AVAILABLE_WORKINGno8, AVAILABLE_WORKINGno91, dan AVAILABLE_WORKINGno92
+
 ## Soal 10
 
+Diminta melakukan redirect saat mengakses google.com menjadi menuju monta.if.its.ac.id 
+
+Tambahkan pada konfigurasi file squid.conf :
+
+acl redsite dstdomain google.com
+deny_info http://monta.if.its.ac.id redsite
+
+http_reply_access deny redsite
+
+acl redsite dstdomain google.com
+untuk mendefinisikan site yang mau diredirect
+
+deny_info http://monta.if.its.ac.id redsite
+untuk melakukan memberikan deny info pada redsite dengan http://monta.if.its.ac.id
+
+http_reply_access deny redsite
+untuk melakukan deny pada reply access redsite
+
+7-10 file squid.conf
+
+include /etc/squid/acl.conf
+
+http_port 8080
+visible_hostname mojokerto
+
+auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid3/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access deny !USERS
+http_access deny !AVAILABLE_WORKINGno8 !AVAILABLE_WORKINGno91 !AVAILABLE_WORKINGno92
+acl redsite dstdomain google.com
+deny_info http://monta.if.its.ac.id/ redsite 
+http_reply_access deny redsite 
+http_access allow all
+
+http_access allow all
+untuk melakukan allow pada semua akses selain pengecualian yang sudah disebutkan.
+
+
 ## Soal 11
+
+Diminta mengubah error page default squid 
+
+Melakukan wget sesuai perintah soal.
+Melakukan back up pada error page default squid
+
+error page default squid :
+/usr/share/squid/errors/en/ERR_ACCESS_DENIED
+
+Melakukan back up pada file ERR_ACCESS_DENIED , kemudian melakukan rename menjadi ERR_ACCESS_DENIEDbak :
+
+mv /usr/share/squid/errors/en/ERR_ACCESS_DENIED /usr/share/squid/errors/en/ERR_ACCESS_DENIEDbak
+
+Mengganti error page default squid : 
+mv ERR_ACCESS_DENIED /usr/share/squid/errors/en/ERR_ACCESS_DENIED
 
 ## Soal 12
 
