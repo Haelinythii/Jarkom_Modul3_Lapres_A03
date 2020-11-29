@@ -336,16 +336,16 @@ Selanjutnya, squid di restart dengan cara mengetikkan perintah:
 service squid restart
 ```
 
-Saat user masuk ke google.com pada waktu yang telah disebutkan :
+user masuk ke google.com pada waktu yang telah disebutkan :
 ![klien](img/no7-11_7Redirect.png)
 
-Berikut adalah akses pada jam yang diperbolehkan :
+Berikut adalah akses pada jam yang diminta :
 ![klien](img/no7-11_5DalamWaktu.png)
 
 User dialihkan menuju http://monta.if.its.ac.id :
 ![klien](img/no7-11_8Redirect.png)
 
-7-10 file squid.conf
+file squid.conf nomor 7-10
 
 ![klien](img/no7-11_1.png)
 ![klien](img/no7-11_2.png)
