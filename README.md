@@ -193,8 +193,7 @@ acl USERS proxy_auth REQUIRED
 http_access deny !USERS
 ```
 
-
-img/no7-11_1.png
+![klien](img/no7-11_1.png)
 
 
 auth_param	: digunakan untuk mengatur autentikasi.
