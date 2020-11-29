@@ -171,12 +171,16 @@ User : userta_a03
 Password : inipassw0rdta_a03
 
 Buat user dan password baru. Ketikkan:
+
+```
 htpasswd -c /etc/squid/passwd userta_a03
+```
 
 type & re type password inipassw0rdta_a03
 
 Edit konfigurasi squid menjadi:
 
+```
 http_port 8080
 visible_hostname mojokerto
 
@@ -187,6 +191,11 @@ auth_param basic credentialsttl 2 hours
 auth_param basic casesensitive on
 acl USERS proxy_auth REQUIRED
 http_access deny !USERS
+```
+
+
+img/no7-11_1.png
+
 
 auth_param	: digunakan untuk mengatur autentikasi.
 program		: Perintah untuk mendefiniskan autentikator eksternal.
@@ -196,7 +205,10 @@ credentialsttl	: Mengatur masa aktif suatu autentikasi berlaku.
 casesensitive	: Mengatur apakah username bersifat case sensitive atau tidak.
 acl		: digunakan untuk mendefinisikan pengaturan akses tertentu. 
 
+```
 http_access deny !USERS
+```
+
 
 Melakukan deny pada akses yang dilakukan oleh selain user.
 
