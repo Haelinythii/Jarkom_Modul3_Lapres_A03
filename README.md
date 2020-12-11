@@ -129,14 +129,14 @@ range 192.168.0.110 192.168.0.200
 
 **Soal 4:**
 
-Pada subnet 3 yaitu 192.168.0.1, kita masukkan 
+Pada subnet 3 yaitu 192.168.1.0, kita masukkan 
 ```
 range 192.168.0.50 192.168.0.70
 ```
 
 **Soal 5:**
 
-Pada kedua subnet, 1 dan 3 yaitu 192.168.0.0 dan 192.168.0.1, kita masukkan 
+Pada kedua subnet, 1 dan 3 yaitu 192.168.0.0 dan 192.168.1.0, kita masukkan 
 ```
 option domain-name-servers 10.151.73.34, 202.46.129.2;
 ```
@@ -144,13 +144,13 @@ agar klien mendapatkan DNS Malang (10.151.73.34) dan DNS 202.46.129.2 dari DHCP
 
 **Soal 6:**
 
-Pada subnet 1 192.168.0.0, kita masukkan 
+Pada subnet 1, yaitu 192.168.0.0, kita masukkan 
 ```
 default-lease-time 300;
 max-lease-time 300;
 ```
 
-Sedangkan pada subnet 1 192.168.0.0, kita masukkan 
+Sedangkan pada subnet 3, yaitu 192.168.1.0, kita masukkan 
 ```
 default-lease-time 600;
 max-lease-time 600;
